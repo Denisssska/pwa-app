@@ -21,6 +21,7 @@ export const createDate = (params?: CreateParams) => {
     const timeStamp = d.getTime();
     const week = getWeekNumber(d)
     return {
+        date:d,
         dayNumber,
         day,
         dayShort,
