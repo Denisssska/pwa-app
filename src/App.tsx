@@ -6,11 +6,6 @@ import {NavLink, Route, Routes} from "react-router-dom";
 const About = lazy(() => import('./About'));
 const Home = lazy(() => import('./Home'));
 
-interface RoutesProps {
-    children?: React.ReactNode;
-    location?: Partial<Location> | string;
-}
-
 function App() {
     return (
         <>
