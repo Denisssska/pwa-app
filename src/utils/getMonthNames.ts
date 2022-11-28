@@ -15,6 +15,6 @@ export const getMonthNames = (locale: string = 'default') => {
         });
         monthsNames[monthIndex] = {month, monthIndex, monthShort, date}
     })
-    console.log(monthsNames)
+    //console.log(monthsNames)
     return monthsNames;
 }

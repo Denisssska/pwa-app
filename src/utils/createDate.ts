@@ -11,7 +11,7 @@ export const createDate = (params?: CreateParams) => {
     const dayNumber = d.getDate();
     const day = d.toLocaleDateString(locale, {weekday: 'long'});
     const dayShort = d.toLocaleDateString(locale, {weekday: 'short'});
-    const dayNumberInWeek = d.getDate() + 1;
+    const dayNumberInWeek = d.getDay() + 1;
     const year = d.getFullYear();
     const yearShort = d.toLocaleDateString(locale, {year: '2-digit'});
     const month = d.toLocaleDateString(locale, {month: 'long'});
