@@ -1,0 +1,17 @@
+.root {
+  margin-left: 2%;
+  width: 15%;
+  align-self: end;
+  margin-bottom: 2%;
+
+  & div {
+    display: flex;
+    align-items: center;
+    justify-content: inherit;
+
+  }
+
+  & h3 {
+    margin-left: 3%;
+  }
+}

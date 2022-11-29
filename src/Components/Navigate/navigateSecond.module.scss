@@ -1,0 +1,16 @@
+.root {
+  margin-right: 2%;
+  width: 15%;
+  align-self: start;
+  margin-top: 2%;
+
+  & div {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+
+  & h3 {
+    margin-right: 3%;
+  }
+}

@@ -1,0 +1,23 @@
+button {
+  align-self: center;
+  border: none;
+  padding: .375em;
+  width: 2.25em;
+  height: 2.25em;
+  border-radius: 50%;
+  box-shadow: 0 .375em .5em -.125em #808080,
+  inset 0 -.25em .5em -.125em #bbb;
+  background: linear-gradient(#fdfdfd, #c4c4c4) content-box,
+  linear-gradient(#c5c5c5, #efefef);
+  font-size: 1.5em;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(1px);
+  }
+
+  &:active {
+    background: linear-gradient(#c5c5c5, #efefef) content-box,
+    linear-gradient(#fdfdfd, #c4c4c4);
+  }
+}
