@@ -1,6 +1,6 @@
 import React from 'react';
 import {useCalendar} from "../../hooks/useCalendar";
-
+import styles from './calendar.module.scss';
 interface CalendarProps {
     locale?: string;
     selectedDate: Date;
@@ -13,7 +13,7 @@ const Calendar: React.FC<CalendarProps> = ({firstWeekDay = 2, selectDate, select
     const {state} = useCalendar({firstWeekDay, selectedDate})
     console.log(state)
     return (
-        <div>
+        <div className={styles.root}>
             Calendar
         </div>
     );

@@ -16,6 +16,7 @@ const getYearsInterval = (year: number) => {
     return [...Array(10)].map((_, index) => startYear + index)
 }
 export const useCalendar = ({locale = 'default', selectedDate: date, firstWeekDay =2}: UseCalendarProps) => {
+
     const [mode, setMode] = useState<"days" | "months" | "years">('days');
     const [selectedDate, setSelectedDate] = useState(createDate({date}));
     const [selectedMonth, setSelectedMonth] = useState(createMonth({
@@ -40,9 +41,11 @@ export const useCalendar = ({locale = 'default', selectedDate: date, firstWeekDa
         const firstDay = days[0];
         const lastDay = days[monthNumberOfDays - 1];
         const shiftIndex = firstWeekDay - 1;
+        console.log(shiftIndex)
         const numberOfPrevDays = firstDay.dayNumberInWeek - 1 - shiftIndex < 0 ?
             7 - (firstWeekDay - firstDay.dayNumberInWeek) : firstDay.dayNumberInWeek - 1 - shiftIndex;
-        const numberOfNextDays = 7 - lastDay.dayNumberInWeek + shiftIndex > 6 ?
+        const numberOfNextDays =
+            7 - lastDay.dayNumberInWeek + shiftIndex > 6 ?
             7 - lastDay.dayNumberInWeek - (7 - shiftIndex) :
             7 - lastDay.dayNumberInWeek + shiftIndex;
         const totalCalendarDays = days.length + numberOfPrevDays + numberOfNextDays;
@@ -57,8 +60,10 @@ export const useCalendar = ({locale = 'default', selectedDate: date, firstWeekDa
         for (let i = totalCalendarDays - numberOfNextDays; i < totalCalendarDays; i += 1) {
             result[i] = nextMonthDays[i - totalCalendarDays + numberOfNextDays]
         }
+        //console.log(numberOfNextDays)
         return result
     }, [selectedMonth.year, selectedMonth.monthIndex, selectedYear]);
+
     return {
         state: {
             mode,
