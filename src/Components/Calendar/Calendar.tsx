@@ -13,7 +13,6 @@ const Calendar: React.FC<CalendarProps> = ({firstWeekDay = 2, selectDate, select
 
     const {state} = useCalendar({firstWeekDay, selectedDate})
     console.log(state)
-    let number ;
     return (
 
         <div className={styles.root}>
@@ -21,12 +20,7 @@ const Calendar: React.FC<CalendarProps> = ({firstWeekDay = 2, selectDate, select
             <h1>{state.selectedDate.month}</h1>
             <div className={styles.dayShort}>
                 {state.weekDaysNames.map((item, index) => (<h4 key={index}>{item.dayShort}
-                    {state.calendarDays.filter((value,ind)=>{
-                        if( value.day===item.day){
-                            (<h4>{value.dayNumber}</h4>)
-                        }
 
-                    })}
                 </h4>))}
             </div>
         </div>

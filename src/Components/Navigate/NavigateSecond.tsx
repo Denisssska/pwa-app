@@ -7,15 +7,15 @@ const NavigatePanelSecond = () => {
         <nav className={styles.root}>
             <div>
                 <h3>profile</h3>
-                <StyledButton navigateItem="/profile"></StyledButton>
+                <StyledButton isDisabled={true} navigateItem="/profile"></StyledButton>
             </div>
             <div>
                 <h3>About</h3>
-                <StyledButton navigateItem="/about"></StyledButton>
+                <StyledButton isDisabled={true} navigateItem="/about"></StyledButton>
             </div>
             <div>
                 <h3>exit</h3>
-                <StyledButton navigateItem="/exit"></StyledButton>
+                <StyledButton isDisabled={true} navigateItem="/exit"></StyledButton>
             </div>
 
         </nav>

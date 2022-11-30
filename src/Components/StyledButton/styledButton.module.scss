@@ -20,4 +20,13 @@ button {
     background: linear-gradient(#c5c5c5, #efefef) content-box,
     linear-gradient(#fdfdfd, #c4c4c4);
   }
+
+  &:disabled {
+    background: radial-gradient(circle, rgba(255,41,41,1) 0%, rgba(19,27,14,1) 100%) content-box,
+    linear-gradient(#fdfdfd, #c4c4c4);
+  }
+  &:focus {
+    background: radial-gradient(circle, rgba(106, 255, 41, 1) 0%, rgba(84, 152, 40, 1) 100%) content-box,
+    linear-gradient(#fdfdfd, #c4c4c4);
+  }
 }

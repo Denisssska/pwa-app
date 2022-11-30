@@ -1,0 +1,22 @@
+.container{
+  display: inline-block;
+& .typed_out{
+  overflow: hidden;
+  border-right: .30em solid orange;
+  border-radius: 4px;
+  white-space: nowrap;
+  animation:
+          typing 1s steps(20, end) forwards,
+          blinking 1.2s infinite;
+  font-size: 1.6rem;
+  width:10% ;
+}
+  @keyframes typing {
+    from { width: 10% }
+    to { width: 100% }
+  }
+  @keyframes blinking {
+    from { border-color: transparent }
+    to { border-color: orange; }
+  }
+}
