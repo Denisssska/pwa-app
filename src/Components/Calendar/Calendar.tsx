@@ -1,6 +1,7 @@
 import React from 'react';
 import {useCalendar} from "../../hooks/useCalendar";
 import styles from './calendar.module.scss';
+import Table from "../Table/Table";
 
 interface CalendarProps {
     locale?: string;
@@ -16,13 +17,9 @@ const Calendar: React.FC<CalendarProps> = ({firstWeekDay = 2, selectDate, select
     return (
 
         <div className={styles.root}>
-            <h1>{state.selectedDate.dayNumber}. {state.selectedDate.monthNumber}. {state.selectedDate.year}</h1>
-            <h1>{state.selectedDate.month}</h1>
-            <div className={styles.dayShort}>
-                {state.weekDaysNames.map((item, index) => (<h4 key={index}>{item.dayShort}
-
-                </h4>))}
-            </div>
+            <div>{state.selectedDate.dayNumber}. {state.selectedDate.monthNumber}. {state.selectedDate.year}</div>
+            <div>{state.selectedDate.month}</div>
+            <Table/>
         </div>
     );
 };
