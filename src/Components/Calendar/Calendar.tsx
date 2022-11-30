@@ -2,6 +2,9 @@ import React from 'react';
 import {useCalendar} from "../../hooks/useCalendar";
 import styles from './calendar.module.scss';
 import Table from "../Table/Table";
+import {formatDate} from "../../utils/formatDate";
+import left from '../../assets/l.png';
+import right from '../../assets/r.png';
 
 interface CalendarProps {
     locale?: string;
@@ -15,10 +18,17 @@ const Calendar: React.FC<CalendarProps> = ({firstWeekDay = 2, selectDate, select
     const {state} = useCalendar({firstWeekDay, selectedDate})
     console.log(state)
     return (
-
         <div className={styles.root}>
-            <div>{state.selectedDate.dayNumber}. {state.selectedDate.monthNumber}. {state.selectedDate.year}</div>
-            <div>{state.selectedDate.month}</div>
+            <div className={styles.headerDate}>{formatDate(selectedDate, "DD MM YYYY")}</div>
+            <div className={styles.selectedDay}>
+                <img className={styles.image} src={left} alt="left"/>
+                {state.mode === 'days' && (
+                    <div>
+                        {state.monthsNames[state.selectedMonth.monthIndex].month} {state.selectedYear}
+                    </div>
+                )}
+                <img className={styles.image} src={right} alt="right"/>
+            </div>
             <Table/>
         </div>
     );
