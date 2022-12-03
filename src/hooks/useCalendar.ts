@@ -74,6 +74,6 @@ export const useCalendar = ({locale = 'default', selectedDate: date, firstWeekDa
             selectedDate,
             selectedYear,
             selectedYearInterval
-        }
+        },functions:{setMode}
     };
 }
