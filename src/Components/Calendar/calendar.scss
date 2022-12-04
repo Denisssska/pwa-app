@@ -4,12 +4,13 @@
   cursor: pointer;
 }
 .calendar__day:hover {
-  background-color:rgba(105, 105, 105, 1);;
+background-color:rgba(138, 33, 33, .5);
 
 }
 .calendar__selected__day {
-  color: white;
-background-color:rgba(105, 105, 105, .5);
+  color: black !important;
+  background-color: rgba(138, 33, 33, .5);;
+//background-color:rgba(105, 105, 105, .5);
 }
 .calendar__additional__day {
   padding: 5.5px;
