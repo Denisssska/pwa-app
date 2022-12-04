@@ -23,7 +23,8 @@ const Calendar: React.FC<CalendarProps> = ({firstWeekDay = 2, selectDate, select
         <div className={styles.root}>
             <div className={styles.headerDate}>{formatDate(selectedDate, "DD MM YYYY")}</div>
             <div className={styles.selectedDay}>
-                <img aria-hidden className={styles.image} src={left} alt="left"/>
+                <img onClick={() => functions.onClickArrow('left')} aria-hidden className={styles.image} src={left}
+                     alt="left"/>
                 {state.mode === 'days' && (
                     <div aria-hidden onClick={() => functions.setMode('months')}>
                         {state.monthsNames[state.selectedMonth.monthIndex].month}
@@ -40,7 +41,8 @@ const Calendar: React.FC<CalendarProps> = ({firstWeekDay = 2, selectDate, select
                         {state.selectedYearInterval[state.selectedYearInterval.length - 1]}
                     </div>
                 )}
-                <img aria-hidden className={styles.image} src={right} alt="right"/>
+                <img onClick={() => functions.onClickArrow('right')} aria-hidden className={styles.image} src={right}
+                     alt="right"/>
             </div>
             <div className={styles.calendar__week__names}>
                 {state.weekDaysNames.map((weekDaysName) => (
@@ -48,21 +50,20 @@ const Calendar: React.FC<CalendarProps> = ({firstWeekDay = 2, selectDate, select
                 ))}
             </div>
             <div className={styles.calendar__days}>{state.calendarDays.map(day => {
-                // console.log("@")
                 const isToday = checkIsToday(day.date);
                 const isSelectedDay = checkDateIsEqual(day.date, state.selectedDate.date);
                 const isAdditionalDay = day.monthIndex !== state.selectedMonth.monthIndex;
                 return <div aria-hidden
-                    onClick={()=>{
-                        functions.setSelectedDate(day)
-                        selectDate(day.date)
-                    }}
-                    className={[
-                        'calendar__day',
-                        isToday ? 'calendar__today' : '',
-                        isSelectedDay ? 'calendar__selected__day' : '',
-                        isAdditionalDay ? 'calendar__additional__day' : ''].join(' ')}
-                    key={`${day.dayNumber}-${day.monthIndex}`}>{day.dayNumber}</div>
+                            onClick={() => {
+                                functions.setSelectedDate(day)
+                                selectDate(day.date)
+                            }}
+                            className={[
+                                'calendar__day',
+                                isToday ? 'calendar__today' : '',
+                                isSelectedDay ? 'calendar__selected__day' : '',
+                                isAdditionalDay ? 'calendar__additional__day' : ''].join(' ')}
+                            key={`${day.dayNumber}-${day.monthIndex}`}>{day.dayNumber}</div>
             })}</div>
         </div>
     );

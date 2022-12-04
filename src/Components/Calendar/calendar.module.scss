@@ -47,6 +47,8 @@
     font-size: 25px;
     margin-bottom: 5%;
 
+    & .arrowLeft{}
+
     & .image {
       border-radius: 50%;
       background: radial-gradient(circle, rgba(224, 228, 232, 1) 0%, rgba(19, 27, 14, 1) 75%);

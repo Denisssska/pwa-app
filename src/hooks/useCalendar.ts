@@ -15,7 +15,7 @@ const getYearsInterval = (year: number) => {
     const startYear = Math.floor(year / 10) * 10;
     return [...Array(10)].map((_, index) => startYear + index)
 }
-export const useCalendar = ({locale = 'default', selectedDate: date, firstWeekDay =2}: UseCalendarProps) => {
+export const useCalendar = ({locale = 'default', selectedDate: date, firstWeekDay = 2}: UseCalendarProps) => {
 
     const [mode, setMode] = useState<"days" | "months" | "years">('days');
     const [selectedDate, setSelectedDate] = useState(createDate({date}));
@@ -29,7 +29,7 @@ export const useCalendar = ({locale = 'default', selectedDate: date, firstWeekDa
     const weekDaysNames = useMemo(() => getWeekDaysNames(firstWeekDay, locale), [])
     const days = useMemo(() => selectedMonth.createMonthDays(), [selectedMonth, selectedYear])
     const calendarDays = useMemo(() => {
-        const monthNumberOfDays = getMonthNumberOfDays(selectedDate.monthIndex, selectedYear)
+        const monthNumberOfDays = getMonthNumberOfDays(selectedMonth.monthIndex, selectedYear)
         const prevMonthDays = createMonth({
             date: new Date(selectedYear, selectedMonth.monthIndex - 1),
             locale
@@ -45,8 +45,8 @@ export const useCalendar = ({locale = 'default', selectedDate: date, firstWeekDa
             7 - (firstWeekDay - firstDay.dayNumberInWeek) : firstDay.dayNumberInWeek - 1 - shiftIndex;
         const numberOfNextDays =
             7 - lastDay.dayNumberInWeek + shiftIndex > 6 ?
-            7 - lastDay.dayNumberInWeek - (7 - shiftIndex) :
-            7 - lastDay.dayNumberInWeek + shiftIndex;
+                7 - lastDay.dayNumberInWeek - (7 - shiftIndex) :
+                7 - lastDay.dayNumberInWeek + shiftIndex;
         const totalCalendarDays = days.length + numberOfPrevDays + numberOfNextDays;
         const result = [];
         for (let i = 0; i < numberOfPrevDays; i += 1) {
@@ -62,7 +62,24 @@ export const useCalendar = ({locale = 'default', selectedDate: date, firstWeekDa
         //console.log(numberOfNextDays)
         return result
     }, [selectedMonth.year, selectedMonth.monthIndex, selectedYear]);
-
+    const onClickArrow = (direction: 'right' | "left") => {
+        if (mode === 'days') {
+            const monthIndex = direction === 'left' ? selectedMonth.monthIndex - 1 : selectedMonth.monthIndex + 1;
+            if (monthIndex === -1) {
+                const year = selectedYear - 1;
+                setSelectedYear(year)
+                if (!selectedYearInterval.includes(year)) setSelectedYearInterval(getYearsInterval(year));
+                return setSelectedMonth(createMonth({date: new Date(year, 11), locale}))
+            }
+            if (monthIndex === 12) {
+                const year = selectedYear + 1;
+                setSelectedYear(year)
+                if (!selectedYearInterval.includes(year)) setSelectedYearInterval(getYearsInterval(year));
+                return setSelectedMonth(createMonth({date: new Date(year, 0), locale}))
+            }
+            setSelectedMonth(createMonth({date: new Date(selectedYear, monthIndex), locale}))
+        }
+    }
     return {
         state: {
             mode,
@@ -73,6 +90,6 @@ export const useCalendar = ({locale = 'default', selectedDate: date, firstWeekDa
             selectedDate,
             selectedYear,
             selectedYearInterval
-        },functions:{setMode,setSelectedDate}
+        }, functions: {setMode, setSelectedDate,onClickArrow}
     };
 }
