@@ -1,0 +1,22 @@
+.calendar__day {
+  border-radius: 5px;
+  padding: 5.5px 0;
+  cursor: pointer;
+}
+.calendar__day:hover {
+  background-color:rgba(105, 105, 105, 1);;
+
+}
+.calendar__selected__day {
+  color: white;
+background-color:rgba(105, 105, 105, .5);
+}
+.calendar__additional__day {
+  padding: 5.5px;
+  font-weight: 300;
+  cursor: pointer;
+  color: gray;
+}
+.calendar__today {
+  color: red;
+}

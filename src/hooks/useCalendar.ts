@@ -41,7 +41,6 @@ export const useCalendar = ({locale = 'default', selectedDate: date, firstWeekDa
         const firstDay = days[0];
         const lastDay = days[monthNumberOfDays - 1];
         const shiftIndex = firstWeekDay - 1;
-        console.log(shiftIndex)
         const numberOfPrevDays = firstDay.dayNumberInWeek - 1 - shiftIndex < 0 ?
             7 - (firstWeekDay - firstDay.dayNumberInWeek) : firstDay.dayNumberInWeek - 1 - shiftIndex;
         const numberOfNextDays =
@@ -74,6 +73,6 @@ export const useCalendar = ({locale = 'default', selectedDate: date, firstWeekDa
             selectedDate,
             selectedYear,
             selectedYearInterval
-        },functions:{setMode}
+        },functions:{setMode,setSelectedDate}
     };
 }

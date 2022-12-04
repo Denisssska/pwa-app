@@ -1,10 +1,12 @@
 import React from 'react';
 import {useCalendar} from "../../hooks/useCalendar";
 import styles from './calendar.module.scss';
-import Table from "../Table/Table";
 import {formatDate} from "../../utils/formatDate";
 import left from '../../assets/l.png';
 import right from '../../assets/r.png';
+import {checkIsToday} from "../../utils/checkIsToday";
+import {checkDateIsEqual} from "../../utils/checkDateIsEqual";
+import './calendar.scss';
 
 interface CalendarProps {
     locale?: string;
@@ -33,14 +35,35 @@ const Calendar: React.FC<CalendarProps> = ({firstWeekDay = 2, selectDate, select
                     </div>
                 )}
                 {state.mode === 'years' && (
-                    <div aria-hidden  onClick={() => functions.setMode('days')}>
-                        {state.selectedYearInterval[0]} -{" "}
-                        {state.selectedYearInterval[state.selectedYearInterval.length]}
+                    <div aria-hidden onClick={() => functions.setMode('days')}>
+                        {state.selectedYearInterval[0]} - {" "}
+                        {state.selectedYearInterval[state.selectedYearInterval.length - 1]}
                     </div>
                 )}
                 <img aria-hidden className={styles.image} src={right} alt="right"/>
             </div>
-            <Table/>
+            <div className={styles.calendar__week__names}>
+                {state.weekDaysNames.map((weekDaysName) => (
+                    <div key={weekDaysName.dayShort}>{weekDaysName.dayShort}</div>
+                ))}
+            </div>
+            <div className={styles.calendar__days}>{state.calendarDays.map(day => {
+                // console.log("@")
+                const isToday = checkIsToday(day.date);
+                const isSelectedDay = checkDateIsEqual(day.date, state.selectedDate.date);
+                const isAdditionalDay = day.monthIndex !== state.selectedMonth.monthIndex;
+                return <div aria-hidden
+                    onClick={()=>{
+                        functions.setSelectedDate(day)
+                        selectDate(day.date)
+                    }}
+                    className={[
+                        'calendar__day',
+                        isToday ? 'calendar__today' : '',
+                        isSelectedDay ? 'calendar__selected__day' : '',
+                        isAdditionalDay ? 'calendar__additional__day' : ''].join(' ')}
+                    key={`${day.dayNumber}-${day.monthIndex}`}>{day.dayNumber}</div>
+            })}</div>
         </div>
     );
 };

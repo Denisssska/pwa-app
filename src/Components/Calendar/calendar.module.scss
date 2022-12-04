@@ -8,12 +8,33 @@
   height: 450px;
 
   & .headerDate {
-  margin: 5% auto;
+    margin: 5% auto;
     font-size: 30px;
   }
 
-  & .block {
-    margin: 5% auto;
+  & .calendar__week__names {
+    height: 20px;
+    font-weight: 400;
+    font-size: 15px;
+    color: inherit;
+    text-align: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px 1px;
+  }
+
+  & .calendar__days {
+    height: 10px;
+    font-weight: 400;
+    font-size: 15px;
+    color: inherit;
+    text-align: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 1fr;
+    gap: 1px 1px;
   }
 
   & .table {
