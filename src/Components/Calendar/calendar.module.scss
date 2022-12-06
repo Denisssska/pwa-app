@@ -8,9 +8,6 @@
   height: 450px;
 
   & .headerDate {
-    //margin: 5% auto;
-    //font-size: 30px;
-
     font-weight: 400;
     font-size: 25px;
     color: darkred;
@@ -19,7 +16,6 @@
   }
 
   & .calendar__week__names {
-    //height: 20px;
     font-weight: 400;
     font-size: 20px;
     color: darkred;
@@ -54,11 +50,7 @@
     align-items: center;
     justify-content: center;
     font-size: 25px;
-    //margin-bottom: 5%;
-    //background: radial-gradient(circle,  rgba(0, 0, 0, 1) 0%, rgba(241, 241, 241, 1) 100%);
-    //background: radial-gradient(circle, rgba(11,11,11,1) 0%, rgba(117,113,113,1) 100%);
     background: radial-gradient(circle, rgba(212, 4, 4, 1) 0%, rgba(11, 0, 0, 1) 100%);
-
     padding: 2%;
 
     & .arrowLeft {
@@ -88,6 +80,7 @@
     & div {
       margin: 0 2%;
       width: 70%;
+      cursor: pointer;
     }
   }
 
