@@ -5,6 +5,7 @@
   align-items: center;
   cursor: pointer;
   border-radius: 5px;
+
 }
 
 .calendar__allMonths:hover {
@@ -18,4 +19,9 @@
 .calendar__selectedMonth {
   color: black !important;
   background: rgba(255, 255, 255, 0.5);
+}
+.calendar__unchoosable__year {
+  font-weight: 300;
+  padding: 9px 16px;
+  color: grey;
 }

@@ -27,12 +27,12 @@ const AllMonths: React.FC<AllMonthsProps> = ({
                                              }) => {
     return (
         <div className={styles.calendar__allMonths_container}>
-            {monthsNames.map((monthsName) => {
+            {monthsNames.map((monthsName,index) => {
                 const isCurrentMonth = new Date().getMonth() === monthsName.monthIndex &&
                     new Date().getFullYear() === selectedYear;
                 const isSelectedMonth = monthsName.monthIndex === monthIndex;
                 return (
-                    <div
+                    <div key={index}
                         onClick={() => {
                             setSelectedMonthByIndex(monthsName.monthIndex)
                             setMode('days')

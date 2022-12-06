@@ -8,15 +8,23 @@
   height: 450px;
 
   & .headerDate {
-    margin: 5% auto;
-    font-size: 30px;
+    //margin: 5% auto;
+    //font-size: 30px;
+
+    font-weight: 400;
+    font-size: 25px;
+    color: darkred;
+    background: radial-gradient(circle, rgba(241, 241, 241, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    padding: 2%;
   }
 
   & .calendar__week__names {
-    height: 20px;
+    //height: 20px;
     font-weight: 400;
-    font-size: 15px;
-    color: inherit;
+    font-size: 20px;
+    color: darkred;
+    background: radial-gradient(circle, rgba(241, 241, 241, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    padding: 2%;
     text-align: center;
     align-items: center;
     display: grid;
@@ -34,7 +42,8 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: 1fr;
-    gap: 1px 1px;
+    gap: 36px 1px;
+    margin-top: 3%;
   }
 
   & .table {
@@ -45,7 +54,12 @@
     align-items: center;
     justify-content: center;
     font-size: 25px;
-    margin-bottom: 5%;
+    //margin-bottom: 5%;
+    //background: radial-gradient(circle,  rgba(0, 0, 0, 1) 0%, rgba(241, 241, 241, 1) 100%);
+    //background: radial-gradient(circle, rgba(11,11,11,1) 0%, rgba(117,113,113,1) 100%);
+    background: radial-gradient(circle, rgba(212, 4, 4, 1) 0%, rgba(11, 0, 0, 1) 100%);
+
+    padding: 2%;
 
     & .arrowLeft {
     }
@@ -73,20 +87,8 @@
 
     & div {
       margin: 0 2%;
+      width: 70%;
     }
-  }
-
-  & .calendar__allMonths {
-    padding: 9px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-
-  & .calendar__allMonths:hover {
-    background: rgba(255, 255, 255, 0.3);
   }
 
   & .calendar__allMonths_container {
@@ -95,12 +97,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: 1px 1px;
+    gap: 36px 1px;
+    margin-top: 10%;
   }
 
-  &.calendar__unchoosable__year {
-    font-weight: 300;
-    padding: 9px 16px;
-    color: grey;
-  }
 }
