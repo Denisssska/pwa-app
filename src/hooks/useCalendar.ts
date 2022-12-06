@@ -59,7 +59,6 @@ export const useCalendar = ({locale = 'default', selectedDate: date, firstWeekDa
         for (let i = totalCalendarDays - numberOfNextDays; i < totalCalendarDays; i += 1) {
             result[i] = nextMonthDays[i - totalCalendarDays + numberOfNextDays]
         }
-        //console.log(numberOfNextDays)
         return result
     }, [selectedMonth.year, selectedMonth.monthIndex, selectedYear]);
     const onClickArrow = (direction: 'right' | "left") => {
@@ -79,6 +78,25 @@ export const useCalendar = ({locale = 'default', selectedDate: date, firstWeekDa
             }
             setSelectedMonth(createMonth({date: new Date(selectedYear, monthIndex), locale}))
         }
+        if (mode === 'months' && direction === 'left') {
+            const year = selectedYear - 1;
+            if (!selectedYearInterval.includes(year)) setSelectedYearInterval(getYearsInterval(year))
+            return setSelectedYear(year)
+        }
+        if (mode === 'months' && direction === 'right') {
+            const year = selectedYear + 1;
+            if (!selectedYearInterval.includes(year)) setSelectedYearInterval(getYearsInterval(year))
+            return setSelectedYear(year)
+        }
+        if (mode === 'years' && direction === 'left') {
+            return setSelectedYearInterval(getYearsInterval(selectedYearInterval[0] - 10))
+        }
+        if (mode === 'years' && direction === 'right') {
+            return setSelectedYearInterval(getYearsInterval(selectedYearInterval[0] + 10))
+        }
+    }
+    const setSelectedMonthByIndex = (monthIndex: number) => {
+        setSelectedMonth(createMonth({date: new Date(selectedYear, monthIndex), locale}))
     }
     return {
         state: {
@@ -90,6 +108,6 @@ export const useCalendar = ({locale = 'default', selectedDate: date, firstWeekDa
             selectedDate,
             selectedYear,
             selectedYearInterval
-        }, functions: {setMode, setSelectedDate,onClickArrow}
+        }, functions: {setMode, setSelectedDate, onClickArrow, setSelectedMonthByIndex, setSelectedYear}
     };
 }

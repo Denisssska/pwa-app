@@ -1,0 +1,21 @@
+.calendar__allMonths {
+  padding: 9px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.calendar__allMonths:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.calendar__currentMonth {
+  color: red;
+}
+
+.calendar__selectedMonth {
+  color: black !important;
+  background: rgba(255, 255, 255, 0.5);
+}

@@ -2,8 +2,7 @@ import React from 'react';
 import styles from "../calendar.module.scss";
 import {checkIsToday} from "../../../utils/checkIsToday";
 import {checkDateIsEqual} from "../../../utils/checkDateIsEqual";
-import {useCalendar} from "../../../hooks/useCalendar";
-import './calendar.scss';
+import './oneMonth.scss';
 
 type SelectedDayType = {
     date: Date;

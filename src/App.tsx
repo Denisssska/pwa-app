@@ -9,19 +9,21 @@ const Home = lazy(() => import('./Components/Home/Home'));
 const Calendar = lazy(() => import('./Components/Calendar/Calendar'));
 
 function App() {
-    const [selectedDate,selectDate]=useState(new Date())
+    const [selectedDate, selectDate] = useState(new Date())
     return (
-        <div style={{display:'flex',height:'100vh',justifyContent: 'space-between'}}>
-            <Suspense fallback={<div style={{margin:'30% auto'}}>Loading...</div>}>
-               <NavigatePanelFirst/>
+        <div style={{display: 'flex', height: '100vh', justifyContent: 'space-between'}}>
+            <Suspense fallback={<div style={{margin: '30% auto'}}>Loading...</div>}>
+                <NavigatePanelFirst/>
                 <Routes>
                     <Route path="/about" element={<About/>}/>
                     <Route path="/" element={<Home/>}/>
-                    <Route path="/calendar" element={<Calendar selectDate={selectDate} selectedDate={selectedDate}/>}/>
+                    <Route path="/calendar"
+                           element={<Calendar locale={'en-US'} selectDate={selectDate} selectedDate={selectedDate}/>}/>
                 </Routes>
                 <NavigatePanelSecond/>
             </Suspense>
         </div>
     );
 }
+
 export default App;
