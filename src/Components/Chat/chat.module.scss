@@ -1,0 +1,32 @@
+.root {
+  //border: 2px solid yellow;
+  height: 80%;
+  align-self: center;
+  width: 50%;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .8);
+  & .header {
+    text-align: center;
+    height: 3%;
+    background-color: lightgray;
+  }
+
+  & .container {
+    display: flex;
+    justify-content: space-between;
+    height: 97%;
+opacity: 50%;
+    & .aside {
+      margin-bottom: 0;
+      width: 30%;
+      border: 1px solid gray;
+      background: url("../../assets/aside.jpg")no-repeat center center fixed;
+
+    }
+
+    & .main {
+      width: 70%;
+      background: url("../../assets/chat-fon.jpg")no-repeat center center fixed;
+      border: 1px solid gray;
+    }
+  }
+}

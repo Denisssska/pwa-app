@@ -10,8 +10,8 @@ const NavigatePanelSecond = () => {
                 <StyledButton isDisabled={true} navigateItem="/profile"></StyledButton>
             </div>
             <div>
-                <h3>About</h3>
-                <StyledButton isDisabled={true} navigateItem="/about"></StyledButton>
+                <h3>Chat</h3>
+                <StyledButton isDisabled={false} navigateItem="/chat"></StyledButton>
             </div>
             <div>
                 <h3>exit</h3>
